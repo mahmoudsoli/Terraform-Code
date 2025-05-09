@@ -1,4 +1,4 @@
-name: workflow for terraform
+name: workflow for terraform-v1
 on:
   push:
     branches:

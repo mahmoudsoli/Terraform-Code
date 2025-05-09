@@ -16,10 +16,10 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v2
     
-        - name: Set up Terraform
-          uses: hashicorp/setup-terraform@v1
+        - name: Setup Terraform
+          uses: hashicorp/setup-terraform@v3
           with:
-           terraform_version: 1.0.0
+            terraform_version: 1.6.6
         
         - name: Configure AWS credentials
           uses: aws-actions/configure-aws-credentials@v1
@@ -28,7 +28,6 @@ jobs:
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
             aws-region: us-east-1
-
           
         - name: Terraform Init
           run: terraform init
@@ -38,3 +37,4 @@ jobs:
     
         - name: Terraform Apply
           run: terraform apply -auto-approve
+          

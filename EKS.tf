@@ -22,7 +22,7 @@ module "eks" {
       }
 
       tags = {
-        Name = "eks-node-for-stagging-cluster"
+        Name    = "eks-node-for-stagging-cluster"
         project = "Terraform-with-AzureDevOps"
       }
     }

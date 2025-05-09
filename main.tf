@@ -126,7 +126,7 @@ resource "aws_instance" "NewInstance-SSH" {
   instance_type               = var.instance_type
   subnet_id                   = aws_subnet.new-pub-subnet.id
   associate_public_ip_address = true
-  user_data                   = file("user-data.sh")
+  user_data                   = file("ec2-user-data.sh")
   tags = {
     Name    = var.tags_name
     project = "Terraform-with-AzureDevOps"

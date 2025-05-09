@@ -18,7 +18,6 @@ terraform {
 }
 provider "aws" {
   region  = "us-east-1"
-  profile = "default"
 }
 
 # This block is for the SG (Security Group) resource.

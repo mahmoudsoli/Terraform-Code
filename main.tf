@@ -132,7 +132,7 @@ resource "aws_instance" "NewInstance-SSH" {
     project = "Terraform-with-AzureDevOps"
   }
   vpc_security_group_ids = [aws_security_group.SG-for-devops.id]
-  key_name               = "Pro-Key-pair"
+  key_name               = "demo"
 }
 
 # This block is for the output variables.

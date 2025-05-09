@@ -18,7 +18,7 @@ module "eks" {
 
       ssh = {
         enable     = true
-        public_key = "Pro1-Key-pair"
+        public_key = "demo"
       }
 
       tags = {

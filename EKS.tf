@@ -3,7 +3,7 @@
 # The module is sourced from the Terraform AWS modules repository and is used to create an EKS cluster with managed node groups.
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "eks-stagging-cluster"
+  cluster_name    = "eks-dev-cluster"
   cluster_version = "1.32"
   vpc_id          = aws_vpc.vpc.id
   subnet_ids      = [aws_subnet.new-pub-subnet.id, aws_subnet.new-pub-subnet-2.id]

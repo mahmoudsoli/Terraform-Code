@@ -1,6 +1,3 @@
-# This file is part of the Terraform with Azure DevOps project.
-# This file defines the module for creating an EKS cluster using the terraform-aws-modules/eks/aws module.
-# The module is sourced from the Terraform AWS modules repository and is used to create an EKS cluster with managed node groups.
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "eks-dev-cluster"
@@ -31,6 +28,25 @@ module "eks" {
   tags = {
     Name    = "eks-stagging-cluster"
     project = "Terraform-with-AzureDevOps"
+  }
+}
+
+# Add IAM user 'mahmoud' to aws-auth configmap
+resource "kubernetes_config_map" "aws_auth" {
+  depends_on = [module.eks]
+
+  metadata {
+    name      = "aws-auth"
+    namespace = "kube-system"
+  }
+
+  data = {
+    mapUsers = <<EOT
+- userarn: arn:aws:iam::275837741249:user/mahmoud
+  username: mahmoud
+  groups:
+    - system:masters
+EOT
   }
 }
 

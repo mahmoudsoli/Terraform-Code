@@ -18,6 +18,9 @@ terraform {
 }
 provider "aws" {
   region  = "us-east-1"
+  assume_role {
+    role_arn = data.aws_iam_role.lab_role.arn
+  }
 }
 
 # This block is for the SG (Security Group) resource.

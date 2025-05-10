@@ -19,12 +19,10 @@ terraform {
 provider "aws" {
   region  = "us-east-1"
   assume_role {
-    role_arn = data.aws_iam_role.lab_role.arn
+    role_arn = "arn:aws:iam::564684668195:role/LabRole"
   }
 }
-data "aws_iam_role" "lab_role" {
-  name = "LabRole"
-}
+
 
 # This block is for the SG (Security Group) resource.
 # It creates a security group in the specified VPC with the given ingress and egress rules.

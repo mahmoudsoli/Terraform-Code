@@ -22,6 +22,9 @@ provider "aws" {
     role_arn = data.aws_iam_role.lab_role.arn
   }
 }
+data "aws_iam_role" "lab_role" {
+  name = "LabRole"
+}
 
 # This block is for the SG (Security Group) resource.
 # It creates a security group in the specified VPC with the given ingress and egress rules.

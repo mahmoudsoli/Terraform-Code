@@ -16,14 +16,3 @@ resource "aws_s3_bucket_versioning" "my_bucket_versioning" {
     status = "Enabled"
   }
 }
-
-resource "aws_dynamodb_table" "tfstate-dynamodb-table" {
-  name         = "tfstate-lock-table"
-  hash_key     = "LockID"
-  billing_mode = "PAY_PER_REQUEST"
-
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}

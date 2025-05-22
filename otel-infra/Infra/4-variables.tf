@@ -40,3 +40,32 @@ variable "cluster_name" {
   type        = string
   default     = "otel-cluster"
 }
+
+variable "cluster_version" {
+  description = "Kubernetes version"
+  type        = string
+  default     = "1.32"
+}
+variable "node_groups" {
+  description = "EKS node groups configuration"
+  type = map(object({
+    instance_types = list(string)
+    capacity_type  = string
+    scaling_config = object({
+      desired_size = number
+      max_size     = number
+      min_size     = number
+    })
+  }))
+  default = {
+    eks_nodes = {
+      instance_types = ["t3.micro"]
+      capacity_type  = "ON_DEMAND"
+      scaling_config = {
+        desired_size = 3
+        max_size     = 5
+        min_size     = 2
+      }
+    }
+  }
+}
